@@ -165,7 +165,7 @@ PIS.Config:AddMenu("Ссылки", 			"info", 		"Ссылки", 			info, {
 	{name = "Вконтакте", mat = "vk", col = ocean, func = function() inflexible.util:OpenURL("https://vk.com/im") end},
 	{name = "Контент", 	mat = "steam", col = black, func = function() inflexible.util:OpenURL("https://steamcommunity.com/sharedfiles") end},
 	{name = "Discord", 	mat = "discord", col = white, func = function() inflexible.util:OpenURL("https://discord.gg/11111") end},
-	{name = "Правила", mat = "document", col = white, func = function() inflexible.util:OpenURL("https://docs.google.com/document/d111") end},
+	{name = "Правила", mat = "document", col = white, func = function() inflexible.util:OpenURL("https://docs.google.com/document/d111") end},   // Тут баги напишите в Issues, если заете, как пофиксить.
 
 
 })
