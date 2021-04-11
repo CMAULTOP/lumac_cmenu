@@ -108,8 +108,7 @@ PIS.Config:AddMenu("Деньги", 			"money", 		"Деньги", 				green, {
 
 	{name = "Передать деньги", 	mat = "money_cheque", col = green, func = function() PIS.OpenTextBox("Передача денег","Сколько денег вы хотите дать этому игроку?", "/give") end},
 	{name = "Бросить деньги", 	mat = "money_drop", col = green, func = function() PIS.OpenTextBox("Бросить деньги на пол","Сколько денег вы собираетесь бросить на пол?","/dropmoney") end},
-	--{name = "Выписать чек", 	mat = "money", col = green, func = function() PIS.OpenPlyReasonBox("Выписать чек","Кому выписать чек?","На какую сумму?","/cheque") end},
-	{name = "Продать предмет", 	mat = "sell", col = green, func = function() RunConsoleCommand("say","/sell") end},
+	{name = "Выписать чек", 	mat = "money", col = green, func = function() PIS.OpenPlyReasonBox("Выписать чек","Кому выписать чек?","На какую сумму?","/cheque") end},
 
 
 })
@@ -119,35 +118,21 @@ PIS.Config:AddMenu("RP Действия", 			"action", 		"RP Действия", 
 
 	{name = "Выбросить оружие", 	mat = "gun", col = red, func = function() RunConsoleCommand("say","/drop") end},
 	{name = "Реклама", 				mat = "broadcast", col = red, func = function() PIS.OpenTextBox("Реклама","Укажите текст рекламы","/advert") end},
-	{name = "Казино", 				mat = "casino", col = red, func = function() RunConsoleCommand("mcasino") end},
-	{name = "Dark WEB", 			mat = "darkweb", col = red, func = function() RunConsoleCommand("say", "!darkweb") end},
-	{name = "Заказать убийство", 	mat = "hitman", col = red, func = function() RunConsoleCommand("say","/rhit_openmenu") end},
 	{name = "Уволить", 				mat = "demote", col = red, func = function() PIS.OpenPlyReasonBox("Уволить игрока","Кого вы хотите уволить?","Укажите корректную причину увольнения","/demote") end},
-
-	--
-	--
 
 
 })
 
-PIS.Config:AddMenu("Экстренные службы", 	"emergency", 		"Экстренные службы", 		blue,	{
+PIS.Config:AddMenu("Экстренные службы", 			"emergency", 		"Экстренные службы", 				blue,	  function() RunConsoleCommand("say","/911") end)
 
-	{name = "Полиция", 	mat = "police", col = blue, func = function() inflexible.CallGuard.DoCall("cp") end},
-	{name = "Скорая помощь", 	mat = "medic", col = red, func = function() inflexible.CallGuard.DoCall("medic") end},
-	
-
-
-})      
 
 PIS.Config:AddMenu("Остальное", 			"mill", 		"Остальное", 			violet, {
 
 
 	{name = "Продать все двери", 		mat = "door", col = violet, func = function() RunConsoleCommand("say","/unownalldoors") end},
 	{name = "Смена имени", 				mat = "name", col = violet, func = function() PIS.OpenTextBox("Смена имени персонажа","Как Вас будут звать?","/rpname") end},
-	{name = "Случайное число", 			mat = "dice", col = violet, func = function() RunConsoleCommand("say","/roll") end},
-	{name = "Третье лицо", 			mat = "third_person", col = violet, func = function() RunConsoleCommand("third_person") end},
-	{name = "Пожаловаться на игрока", 			mat = "admin", col = violet, func = function() RunConsoleCommand("say","/r") end},
-	{name = "Emotes", 			mat = "emotes", col = violet, func = function() RunConsoleCommand("emotes") end},
+	{name = "Случайное число", 			mat = "dice", col = violet, func = function() RunConsoleCommand("say","/roll 100") end},
+	{name = "Пожаловаться на игрока", 			mat = "admin", col = violet, func = function() RunConsoleCommand("say","@ админ тп") end},
 
 
 })
@@ -155,17 +140,17 @@ PIS.Config:AddMenu("Остальное", 			"mill", 		"Остальное", 			v
 
 
 
-PIS.Config:AddMenu("Flex-Pass", 			"money_bag", 		"Flex-Pass", 				yellow,	  function() RunConsoleCommand("say","/donate") end)
+PIS.Config:AddMenu("Donate", 			"money_bag", 		"Donate", 				yellow,	  function() RunConsoleCommand("say","/donate") end)
 
 PIS.Config:AddMenu("Ссылки", 			"info", 		"Ссылки", 			info, {
 
 
 
 		
-	{name = "Вконтакте", mat = "vk", col = ocean, func = function() inflexible.util:OpenURL("https://vk.com/im") end},
-	{name = "Контент", 	mat = "steam", col = black, func = function() inflexible.util:OpenURL("https://steamcommunity.com/sharedfiles") end},
-	{name = "Discord", 	mat = "discord", col = white, func = function() inflexible.util:OpenURL("https://discord.gg/11111") end},
-	{name = "Правила", mat = "document", col = white, func = function() inflexible.util:OpenURL("https://docs.google.com/document/d111") end},   // Тут баги напишите в Issues, если заете, как пофиксить.
+	{name = "Вконтакте", mat = "vk", col = ocean, func = function() gui.OpenURL( "https://vk.com" ) end},
+	{name = "Контент", 	mat = "steam", col = black, func = function() gui.OpenURL( "https://steam.ru" ) end},
+	{name = "Discord", 	mat = "discord", col = white, func = function() gui.OpenURL( "https://discord.gg/gmod" ) end},
+	{name = "Правила", mat = "document", col = white, func = function() gui.OpenURL( "https://google.com" ) end}, 
 
 
 })
@@ -175,9 +160,9 @@ PIS.Config:AddMenu("Меню полиции", 		"police", 		"Меню полиц
 
 	{name = "Подать в розыск", 		mat = "police", col = red, func = function() PIS.OpenPlyReasonBox("Обьявить в розыск","Кого обьявить в розыск?","По какой причине?","/wanted") end},
 	{name = "Выдать ордер", 		mat = "police", col = red, func = function() PIS.OpenPlyReasonBox("Выдача ордера","Кому вы хотите выдать ордер?","Обьясните свой выбор.","/warrant") end},
-	{name = "Выдать лицензию", 		mat = "license", col = white, func = function() RunConsoleCommand("say", "/givelicense") end,  customcheck = function(ply) return inflexible.LeadCP[ply:Team()] end},
-	{name = "Начать ком. час", 		mat = "warning", col = redy, func = function() RunConsoleCommand("say", "/lockdown") end, customcheck = function(ply) return ply:isMayor() && !GetGlobalBool("DarkRP_LockDown") end},
-	{name = "Окончить ком. час", 		mat = "warning", col = greeny, func = function() RunConsoleCommand("say", "/unlockdown") end, customcheck = function(ply) return ply:isMayor() && GetGlobalBool("DarkRP_LockDown") end},
+	{name = "Выдать лицензию", 		mat = "license", col = white, func = function() RunConsoleCommand("say", "/givelicense") end},
+	{name = "Начать ком. час", 		mat = "warning", col = redy, func = function() RunConsoleCommand("say", "/lockdown") end},
+	{name = "Окончить ком. час", 		mat = "warning", col = greeny, func = function() RunConsoleCommand("say", "/unlockdown") end},
 
 },function(ply) return ply:isCP() end)
 
