@@ -7,3 +7,5 @@ C MENU for DarkRP, Gmod
 
 Адон работает только с Gamemode DarkRP!
 https://github.com/FPtje/DarkRP
+
+Контент - https://steamcommunity.com/sharedfiles/filedetails/?id=2004190673
